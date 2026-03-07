@@ -5,7 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <h1>alhumdulillah</h1>
+<!-- connect font awesome -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <!-- connect daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<!-- connet google fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+<style>
+    *{
+          font-family: "Geist", sans-serif;
+    }
+</style>
+<body class="bg-gray-50">
+    <header class="w-full flex justify-between space-y-4 bg-white rounded  border border-gray-300 p-2 mb-6">
+        <div class="flex items-center space-x-3">
+            <img src="./github-logo.png" alt="" class="w-10 h-10">
+            <p class="font-bold text-lg">GitHub Issues Tracker</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="relative"><i class="fa-solid fa-magnifying-glass absolute left-3 top-3 -translate-y-0.5 text-gray-400"></i>
+    <input type="text" placeholder="Search" class=" w-20 md:w-46 py-2 pl-10 pr-3 rounded border border-gray-300" />
+  </div>
+  <div>
+    <button class="flex items-center bg-[#4A00FF] text-white px-2 py-1 rounded hover:bg-[#4009c9] transition">
+      <i class="fa-solid fa-plus"></i>
+      <span>New issue</span>
+    </button>
+  </div>
+</div>
+</header>
+<section class="w-[80%] mx-auto bg-white mb-3">
+    <div class="flex gap-8 p-4 rounded-lg shadow mb-3">
+        <button class="px-4 py-2 text-center border border-gray-400 rounded-lg">All</button>
+        <button class="px-4 py-2 text-center border border-gray-400 rounded-lg">Open</button>
+        <button class="px-4 py-2 text-center border border-gray-400 rounded-lg">Closed</button>
+    </div>
+</section>
+<section class="w-[80%] mx-auto bg-white rounded-lg shadow-xl p-6">
+    <div class="flex justify-between gap-3">
+        <div class="flex gap-2"> 
+        <img src="./Aperture.png" alt="" class="pt-3">     
+            <div>
+                <h2 class="font-bold">50 Issues</h2>
+                <p class="text-gray-400">Track and manage your project issues</p>
+          </div>
+        </div>
+        <div class="flex justify-between gap-2"><div class="flex justify-between gap-2">
+           <div><img src="./Open-Status.png" alt=""></div>
+            <div><p>Open</p></div>
+            </div> 
+            <div class="flex justify-between gap-2">
+                <div><img src="./Closed- Status .png" alt=""></div>
+            <div><p>Closed</p></div>
+            </div></div>
+    </div>
+</section>
+<script src="./script.js"></script>
 </body>
 </html>
