@@ -10,11 +10,33 @@
     for(const issue of issues)
     {
         // console.log(issue);
+        let borderColor = "";
+        if(issue.status==="open"){
+            borderColor="border-green-600";
+        }
+        else{
+            borderColor="border-purple-500";
+        }
+        let bgColor = "";
+        if(issue.priority==="high")
+        {
+            bgColor="text-red-500";
+            bgColor="bg-red-200";
+        }
+        else if(issue.priority==="medium")
+        {
+            bgColor="text-yellow-500";
+            bgColor="bg-yellow-200";
+        }
+        else{
+            bgColor="text-purple-500";
+            bgColor="bg-purple-200";
+        }
         const containerDiv = document.createElement("div");
-        containerDiv.innerHTML = `  <div class="bg-white rounded-sm border-t-4 border-red-600 shadow p-2 space-y-4">
+        containerDiv.innerHTML = `  <div class="bg-white rounded-sm border-t-4 ${borderColor} shadow p-2 space-y-4">
         <div class="flex justify-between items-center">
-            <div class="w-10 h-10 rounded-full items-center justify-center pt-2"><img src="./Open-Status.png" alt=""></div>
-            <span class="rounded-3xl text-red-500 px-3 py-1 font-semibold bg-red-200">${issue.priority}</span>
+            <div class="w-10 h-10 rounded-full items-center justify-center pt-2"><border-green-600 img src="./Open-Status.png" alt=""></div>
+            <span class="rounded-3xl ${bgColor} px-3 py-1 font-semibold">${issue.priority}</span>
         </div>
         <h2 class="font-bold px-2 text-xl mb-2
         line-clamp-1">${issue.title}</h2>
