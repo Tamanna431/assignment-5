@@ -85,10 +85,7 @@
               <p id="modal-priority">${model.priority}</p>
             </div>
         </div>
-    
-    
-    
-    `;
+    `
 
     };
 
@@ -116,13 +113,13 @@ const button = document.querySelectorAll(".filter-btn");
     button.forEach(btn=>{
         btn.classList.remove("bg-[#4A00FF]","text-white");
     });
-    document.querySelector(`[onclick="filterIssue('${status}')"]`)
-    // if(btns==="all")
-    // button[0].classList.add("bg-[#4A00FF]","text-white");
-    // if(btns==="open")
-    // button[1].classList.add("bg-[#4A00FF]","text-white");
-    // if(btns==="closed")
-    // button[2].classList.add("bg-[#4A00FF]","text-white");
+    const active=  document.querySelector(`[onclick="filterIssue('${status}')"]`)
+     if(active){
+     active.classList.add("bg-[#4A00FF]","text-white");}
+     //if(btn==="open")//
+    //  button[1].classList.add("bg-[#4A00FF]","text-white");
+     //if(btn==="closed")
+    //  button[2].classList.add("bg-[#4A00FF]","text-white");
  };
  const displayIssue = (issues)=>{
     let containerId = document.getElementById("all-issue-container");
@@ -141,6 +138,7 @@ const button = document.querySelectorAll(".filter-btn");
             iconS =`<i class="fa-regular fa-circle-check" style="color: rgb(99, 230, 190);"></i>`;
             count++;
             countIssue.innerHTML=count + " " +"Issue";
+
     
             
         }
