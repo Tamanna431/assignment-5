@@ -10,6 +10,28 @@
         displayIssue(allIssues)
         });
  };
+ const searchInfo = document.getElementById("search-btn");
+    searchInfo.addEventListener("keyup",function(e){
+        const textSearch = e.target.value.trim();
+        if(textSearch=== "")
+        {
+            displayIssue(allIssues);
+            return;
+        }
+
+        fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${textSearch}`)
+        .then(res=>res.json())
+        .then(data => {
+            displayIssue(data.data)
+        });
+    });
+    // new-issue button
+    const newBtn=document.getElementById("new-btn");
+    newBtn.addEventListener("click",() =>{
+
+        document.getElementById("search-btn").value="";
+        displayIssue(allIssues);
+    });
  //modal display
     async function openModal(id) {
     const res =await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
@@ -73,6 +95,7 @@
  let allIssues =[];
  const filterIssue = (status)=>{
     activeBtn(status);
+    document.getElementById("search-btn").value="";
     if(status=="all")
     {
         displayIssue(allIssues);
