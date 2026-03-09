@@ -1,8 +1,12 @@
+ const loading = document.getElementById("loadingSpinner");
  const loadAllIssue = ()=>{
+    loading.classList.remove("hidden");
+    loading.classList.add("flex");
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
         .then((res)=>res.json())
         .then((json)=>{
             allIssues=json.data;
+            loading.classList.add("hidden");
         displayIssue(allIssues)
         });
  };
@@ -68,6 +72,7 @@
 
  let allIssues =[];
  const filterIssue = (status)=>{
+    activeBtn(status);
     if(status=="all")
     {
         displayIssue(allIssues);
@@ -81,19 +86,20 @@
 displayIssue(filtered);
 
  };
- const activeBtn = (btns)=>{
+ const activeBtn = (status)=>{
 
 const button = document.querySelectorAll(".filter-btn");
 // console.log(button);
     button.forEach(btn=>{
         btn.classList.remove("bg-[#4A00FF]","text-white");
     });
-    if(btns==="all")
-    button[0].classList.add("bg-[#4A00FF]","text-white");
-    if(btns==="open")
-    button[1].classList.add("bg-[#4A00FF]","text-white");
-    if(btns==="closed")
-    button[2].classList.add("bg-[#4A00FF]","text-white");
+    document.querySelector(`[onclick="filterIssue('${status}')"]`)
+    // if(btns==="all")
+    // button[0].classList.add("bg-[#4A00FF]","text-white");
+    // if(btns==="open")
+    // button[1].classList.add("bg-[#4A00FF]","text-white");
+    // if(btns==="closed")
+    // button[2].classList.add("bg-[#4A00FF]","text-white");
  };
  const displayIssue = (issues)=>{
     let containerId = document.getElementById("all-issue-container");
@@ -101,7 +107,7 @@ const button = document.querySelectorAll(".filter-btn");
     countIssue.innerText=allIssues.length +" "+ "Issues";
     let count = 0;
     containerId.innerHTML = "";
-    activeBtn();
+    
     for(const issue of issues)
     {
         // console.log(issue);
@@ -112,7 +118,7 @@ const button = document.querySelectorAll(".filter-btn");
             iconS =`<i class="fa-regular fa-circle-check" style="color: rgb(99, 230, 190);"></i>`;
             count++;
             countIssue.innerHTML=count + " " +"Issue";
-    activeBtn();
+    
             
         }
         else{
