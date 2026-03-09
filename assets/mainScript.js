@@ -6,6 +6,65 @@
         displayIssue(allIssues)
         });
  };
+ //modal display
+    async function openModal(id) {
+    const res =await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+    const data = await res.json();
+    displayModal(data.data)        
+    }
+    const displayModal = (model)=>{
+     const modalDetails = document.getElementById("modal-details");
+     document.getElementById("my_modal_5").showModal();
+     {
+//   "status": "success",
+//   "message": "Issue fetched successfully",
+//   "data": {
+//     "id": 33,
+//     "title": "Add bulk operations support",
+//     "description": "Allow users to perform bulk actions like delete, update status on multiple items at once.",
+//     "status": "open",
+//     "labels": [
+//       "enhancement"
+//     ],
+//     "priority": "low",
+//     "author": "bulk_barry",
+//     "assignee": "",
+//     "createdAt": "2024-02-02T10:00:00Z",
+//     "updatedAt": "2024-02-02T10:00:00Z"
+  
+}
+    modalDetails.innerHTML = `
+    
+    <h3 class="text-lg font-bold" id="modal-title">${model.title}</h3>
+    <div class="flex gap-2 mb-4 text-sm">
+        <span class="rounded-full ${model.status==="open"? "bg-green-500":"bg-purple-500"} text-white px-3 py-1">${model.status}</span>
+        <p class="text-gray-500 pt-1" id="modal-author">. Opened by ${model.author}</p>
+        <p class="text-gray-500 pt-1" id="modal-date" > . ${new Date(model.createdAt).toLocaleDateString()}</p>
+    </div>
+    <div class="flex gap-1 mb-2 items-center whitespace-nowrap">
+            <span class=" text-red-500 rounded-3xl flex items-center px-1 bg-[#FECACA] "><i class="fa-solid fa-bug"></i>${model.labels[0]}</span>
+            <div class="flex items-center  rounded-3xl px-1 text-[#D97706] bg-amber-100">
+                <i class="fa-regular fa-life-ring"></i>
+            <span class="" id="modal-labels">${model.labels[1]}</span>
+        </div>
+        </div>
+        <p class="text-gray-500 " id="modal-description">${model.description}</p>
+        <div class="flex justify-between items-center space-y-2 text-sm text-gray-500 bg-gray-300 rounded-lg w-[80%] p-3">
+            <div>
+                <p>Assignee:</p>
+                <p id="modal-assignee">${model.assignee}</p>
+            </div>
+            <div >
+                <p>Priority:</p>
+              <p id="modal-priority">${model.priority}</p>
+            </div>
+        </div>
+    
+    
+    
+    `;
+
+    };
 
  let allIssues =[];
  const filterIssue = (status)=>{
@@ -23,6 +82,7 @@ displayIssue(filtered);
 
  };
  const activeBtn = (btns)=>{
+
 const button = document.querySelectorAll(".filter-btn");
 // console.log(button);
     button.forEach(btn=>{
@@ -41,6 +101,7 @@ const button = document.querySelectorAll(".filter-btn");
     countIssue.innerText=allIssues.length +" "+ "Issues";
     let count = 0;
     containerId.innerHTML = "";
+    activeBtn();
     for(const issue of issues)
     {
         // console.log(issue);
@@ -51,6 +112,7 @@ const button = document.querySelectorAll(".filter-btn");
             iconS =`<i class="fa-regular fa-circle-check" style="color: rgb(99, 230, 190);"></i>`;
             count++;
             countIssue.innerHTML=count + " " +"Issue";
+    activeBtn();
             
         }
         else{
@@ -76,7 +138,7 @@ const button = document.querySelectorAll(".filter-btn");
             bgColor="bg-purple-200";
         }
         const containerDiv = document.createElement("div");
-        containerDiv.innerHTML = `  <div class="bg-white rounded-sm border-t-4 ${borderColor} shadow p-2 space-y-4">
+        containerDiv.innerHTML = `  <div class="bg-white rounded-sm border-t-4 ${borderColor} shadow p-2 space-y-4"  onclick="openModal('${issue.id}')">
         <div class="flex justify-between items-center">
             <div class="w-10 h-10 rounded-full items-center justify-center pt-2">${iconS}</div>
             <span class="rounded-3xl ${bgColor} px-3 py-1 font-semibold">${issue.priority}</span>

@@ -64,44 +64,24 @@
             <div><p>Closed</p></div>
             </div></div>
     </div>
-         <div id="all-issue-container" class="grid grid-cols-2 lg:grid-cols-4 gap-2 ">
+         <div id="all-issue-container" class="grid grid-cols-2 lg:grid-cols-4 gap-2 " >
          <!-- card -->
 </section>
 
 <!-- Open the modal using ID.showModal() method -->
-<button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
 <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box max-w-2xl">
-    <h3 class="text-lg font-bold" id="modal-title">Fix broken image uploads</h3>
-    <div class="flex gap-2 mb-4 text-sm">
-        <span class="rounded-full bg-green-500 text-white px-3 py-1">opened</span>
-        <p class="text-gray-500 pt-1" id="modal-author">Opened by Fahim Ahmed</p>
-        <p class="text-gray-500 pt-1" id="modal-date" >22/02/2026</p>
-    </div>
-    <div class="flex gap-1 mb-2 items-center whitespace-nowrap">
-            <span class=" text-red-500 rounded-3xl flex items-center px-1 bg-[#FECACA] "><i class="fa-solid fa-bug"></i>${issue.labels[0]}</span>
-            <div class="flex items-center  rounded-3xl px-1 text-[#D97706] bg-amber-100">
-                <i class="fa-regular fa-life-ring"></i>
-            <span class="" id="modal-labels">${issue.labels[1]}</span>
-        </div>
-        </div>
-        <p class="text-gray-500 " id="modal-description">collapsetrhhjhhgdg</p>
-        <div class="flex justify-between items-center space-y-2 text-sm text-gray-500 bg-gray-300 rounded-lg w-[80%] p-3">
-            <div>
-                <p>Assignee:</p>
-                <p id="modal-assignee">Fahim Ahmed</p>
-            </div>
-            <div >
-                <p>Priority:</p>
-              <p id="modal-priority">jk</p>
-            </div>
-        </div>
-    </div>
+    <div class="p-4 items-center space-y-4" id="modal-details"> 
+     </div>
+
     <div class="modal-action">
       <form method="dialog">
         <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
+        <button class="btn bg-[#4A00FF] text-white border-none">Close</button>
       </form>
+      </div>
+    </div>
     </div>
   </div>
 </dialog>
